@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #fff;
+  color: #7E8492;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgb(1, 2, 3);
+}
+
+.section-header .container {
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+.main-navigation {
+  display: flex;
+}
+
+.nav-wrapper {
+  display: flex;
+  list-style: none;
+}
+.nav-wrapper-item {
+  color: #1D1E25;
+}
+.nav-wrapper-item + .nav-wrapper-item {
+  margin-left: 16px;
+}
+.nav-wrapper .contact_us {
+  margin-left: 68px;
+}
+
+.section-widget .container {
+  padding-top: 84px;
+  padding-bottom: 132px;
+}
+
+.section-overview .container {
+  padding-top: 108px;
+  padding-bottom: 108px;
+}
+
+.section-features .container {
+  padding-top: 160px;
+  padding-bottom: 108px;
+}
+
+.section-strength .container {
+  padding-top: 64px;
+  padding-bottom: 160px;
+}
+
+.section-partners .container {
+  padding-top: 84px;
+  padding-bottom: 84px;
+}
+
+.section-services .container {
+  padding-top: 160px;
+  padding-bottom: 108px;
+}
+
+.section-insight .container {
+  padding-top: 64px;
+  padding-bottom: 84px;
+}
+
+.section-testimonials .container {
+  padding-top: 108px;
+  padding-bottom: 64px;
+}
