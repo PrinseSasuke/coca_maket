@@ -23,6 +23,14 @@ a {
   letter-spacing: -3px;
 }
 
+.h2 {
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.2;
+  font-size: 56px;
+  letter-spacing: -2px;
+}
+
 .h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
@@ -109,7 +117,7 @@ a {
   opacity: 0.7;
   top: 184px;
   right: -8px;
-  filter: blur(220px);
+  filter: blur(180px);
 }
 
 .section-widget {
@@ -215,9 +223,52 @@ a {
   color: #E35454;
 }
 
+.section-overview {
+  background-color: #1D1E25;
+}
 .section-overview .container {
   padding-top: 108px;
   padding-bottom: 108px;
+}
+.section-overview .h2 {
+  width: 70%;
+  margin-bottom: 24px;
+}
+.section-overview .text {
+  color: #7E8492;
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 500;
+  width: 60%;
+  margin-bottom: 80px;
+}
+
+.overview-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 56px;
+  column-gap: 160px;
+}
+.overview-list-item svg {
+  margin-bottom: 28px;
+}
+.overview-list-item-title {
+  width: 50%;
+  font-size: 32px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -1px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.overview-list-item-text {
+  color: #7E8492;
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .section-features .container {
