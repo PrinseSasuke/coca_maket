@@ -20,7 +20,7 @@ $padding-vertical-xl: $base * 40; //160
 
 $fw-regular: 400;
 $fw-medium: 500;
-$fw-semi: 500;
+$fw-semi: 600;
 $fw-bold: 700;
 
 $fs-1: 14px;
@@ -34,13 +34,15 @@ $fs-6: 40px;
 $transition: .2s;
 
 $color--primary: #1D1E25;
+$color--white: #fff;
+$color--dark: #000000;
 //== /VARIABLES ===
 
 //== COMMON ===
 body{
     @include inter();
-    background-color: #fff;
-    color: #7E8492;
+    background-color: $color--white;
+    color: $color--primary;
 }
 a{
     text-decoration: none;
@@ -51,24 +53,77 @@ a{
     margin: 0 auto;
     border-bottom: 1px solid rgb(1, 2, 3);
 }
+
+.h1{
+    color: $color--primary;
+    font-weight: $fw-bold;
+    line-height: 1.2;
+    font-size: 80px;
+    letter-spacing: -3px;
+}
+.h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+}
+
+.btn{
+    border: none;
+    padding: $base*4 $base*8;
+    border-radius: $base * 25;
+    @include inter();
+    font-weight: $fw-bold;
+    font-size: $fs-2;
+    background-color: $color--primary;
+    color: $color--white;
+    cursor: pointer;
+    transition: $transition;
+    &:hover{
+        background-color: darken($color--primary, 100%);
+    }
+    &--lg{
+        padding: $base*4 $base*11;
+    }
+}
 //== /COMMON ===
 
 
 //== HEADER ==
 .section-header{
     .container{
-        padding-top: $base * 9;
-        padding-bottom: $base * 9;
+        padding-top: $base * 6;
+        padding-bottom: $base * 5;
     }
 }
 .main-navigation{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .nav-wrapper{
     display: flex;
     list-style: none;
     &-item{
-        color: $color--primary;
+        position: relative;
+        &-link{
+            font-size: $fs-2;
+            font-weight: $fw-medium;
+            color: $color--primary;
+            &:hover{
+                transition: $transition;
+                color: $color--dark;
+                &::before{
+                    content: "";
+                    background-color: $color--dark;
+                    position: absolute;
+                    top: $base * 6;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    width: 100%;
+                }
+            }
+        }
         & + &{
             margin-left: $base * 4;
         }
@@ -83,10 +138,124 @@ a{
 
 
 //== WIDEGET ==
+.circle{
+    position: absolute;
+    width: $base * 132;
+    height: $base * 132;
+    border-radius: 100%;
+    &-1{
+        left: $base * 12;
+        background: #FA7515;
+        filter: blur(220px);
+        opacity: 0.20;
+
+    }
+    &-2{
+        background: #E2F8F0;
+        opacity: 0.7;
+        top: $base * 46;
+        right: -$base * 2;
+        filter: blur(220px);
+    }
+}
 .section-widget{
+    position: relative;
     .container{
         padding-top: $padding-vertical-sm;
         padding-bottom: $padding-vertical-lg;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.section-widget__left{
+    flex-basis: 50%;
+    .h1{
+        margin-bottom: $base * 28;
+    }
+    .text{
+        display: inline-flex;
+        font-weight: $fw-semi;
+        font-size: $fs-5;
+        line-height: 1.3;
+        letter-spacing: -1px;
+        margin-bottom: $base * 17;
+        &::before{
+            content: "";
+            display: inline-block;
+            height: 1px;
+            width: 15%;
+            margin-right: $base * 7;
+            margin-top: $base * 5;
+            background-color: $color--dark;
+            //margin-right: $base * 7;
+        }
+    }
+}
+.widget_form{
+    display: flex;
+    &-input{
+        @include inter();
+        color: #7E8492;
+        border: none;
+        border-bottom: 1px solid #CED1D8;
+        font-size: $fs-2;
+        padding-bottom: $base * 6;
+    }
+}
+
+.section-widget__right{
+    flex-basis: 38%;
+    margin-top: $base * 16;
+    position: relative;
+}
+.graph-sales{
+    margin-bottom: $base * 8;
+}
+.graph-customers{
+    position: absolute;
+    top: -10%;
+    bottom: 0;
+    left: 70%;
+    right: 0;
+    z-index: 2;
+}
+.statistic{
+    display: flex;
+    justify-content: space-between;
+    background-color: $color--dark;
+    border-radius: $base * 2;
+    padding: $base*5 $base*7;
+    &-sales, &-marketing{
+        display: flex;
+        flex-direction: column;
+        &-title{
+            font-size: $fs-1;
+            font-weight: $fw-semi;
+            color: #5C616F;
+            margin-bottom: $base;
+        }
+        &-count{
+            color: $color--white;
+            font-weight: $fw-bold;
+            font-size: 20px;
+            margin-bottom: $base * 2;
+        }
+        &-res{
+            font-size: $fs-1;
+            .percent{
+                color: #60D39C;
+                font-weight: $fw-semi;
+            }
+            .text{
+                color: #5C616E;
+                font-weight: $fw-regular;
+            }
+        }
+    }
+    &-marketing-res{
+        .percent{
+            color: #E35454;
+        }
     }
 }
 //== /WIDEGET ==
