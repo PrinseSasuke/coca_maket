@@ -21,7 +21,6 @@
 //== VARIABLES ===
 $base: 4px;
 
-
 $padding-vertical-xs: $base * 16; //64
 $padding-vertical-sm: $base * 21; //84
 $padding-vertical-ml: $base * 27; //108
@@ -74,11 +73,14 @@ a{
     letter-spacing: -3px;
 }
 .h2{
-    color: $color--white;
+    color: $color--primary;
     font-weight: $fw-semi;
     line-height: 1.2;
     font-size: 56px;
     letter-spacing: -2px;
+    &--white{
+        color: $color--white;   
+    }
 }
 .h1,h2,h3,h4,h5,h6{
     margin: 0;
@@ -334,6 +336,45 @@ a{
     .container{
         padding-top: $padding-vertical-xl;
         padding-bottom: $padding-vertical-ml;
+        display: flex;
+    }
+}
+.features-left{
+    position: relative;
+    .stat-img{
+        position: absolute;
+        top:50%;
+        left:40%;
+        right: 0;
+        bottom: 0;
+    }
+    margin-right: $base * 14;
+}
+.features-right{
+    flex-basis: 45%;
+    .h2{
+        margin-bottom: $base * 6;
+    }
+    .text{
+        @include text-style();
+        width: 70%;
+        margin-bottom: $base * 10;
+    }
+}
+.features-list{
+    list-style: none;
+    &-item{
+        display: flex;
+        align-items: center;
+        svg{
+            margin-right: $base * 4;
+        }
+        &-text{
+            @include text-style();
+            color: $color--primary;
+            width: 70%;
+        }
+        margin-bottom: $base * 8;
     }
 }
 //== /FEAUTERS ==

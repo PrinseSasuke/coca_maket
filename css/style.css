@@ -24,11 +24,14 @@ a {
 }
 
 .h2 {
-  color: #fff;
+  color: #1D1E25;
   font-weight: 600;
   line-height: 1.2;
   font-size: 56px;
   letter-spacing: -2px;
+}
+.h2--white {
+  color: #fff;
 }
 
 .h1, h2, h3, h4, h5, h6 {
@@ -274,6 +277,54 @@ a {
 .section-features .container {
   padding-top: 160px;
   padding-bottom: 108px;
+  display: flex;
+}
+
+.features-left {
+  position: relative;
+  margin-right: 56px;
+}
+.features-left .stat-img {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  right: 0;
+  bottom: 0;
+}
+
+.features-right {
+  flex-basis: 45%;
+}
+.features-right .h2 {
+  margin-bottom: 24px;
+}
+.features-right .text {
+  color: #7E8492;
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 500;
+  width: 70%;
+  margin-bottom: 40px;
+}
+
+.features-list {
+  list-style: none;
+}
+.features-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.features-list-item svg {
+  margin-right: 16px;
+}
+.features-list-item-text {
+  color: #7E8492;
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 500;
+  color: #1D1E25;
+  width: 70%;
 }
 
 .section-strength .container {
