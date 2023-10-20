@@ -85,6 +85,7 @@ ul{
     &--white{
         color: $color--white;
     }
+    margin-bottom: $base * 6;
 }
 .h4{
     color: $color--primary;
@@ -102,6 +103,9 @@ ul{
     padding: 0;
 }
 
+.ta-c{
+    text-align: center;
+}
 .btn{
     border: none;
     padding: $base*4 $base*8;
@@ -308,7 +312,6 @@ ul{
     }
     .h2{
         width:70%;
-        margin-bottom: $base * 6;
     }
     .text{
         @include text-style();
@@ -363,9 +366,6 @@ ul{
 }
 .features-right{
     flex-basis: 45%;
-    .h2{
-        margin-bottom: $base * 6;
-    }
     .text{
         @include text-style();
         margin-bottom: $base * 10;
@@ -494,7 +494,6 @@ ul{
     }
     .h2{
         width: 50%;
-        margin-bottom: $base * 6;
     }
     .text{
         @include text-style();
@@ -530,9 +529,38 @@ ul{
 
 //== INSIGHT ==
 .section-insight{
+    position: relative;
     .container{
         padding-top: $padding-vertical-xs;
         padding-bottom: $padding-vertical-sm;
+    }
+    .subtitle{
+        @include text-style();
+        margin-bottom: $base * 20;
+    }
+
+}
+.insight-list{
+    position: relative;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+    &-item{
+        flex-basis: 45%;
+        &-subtitle{
+            font-weight: $fw-regular;
+            line-height: 1.5;
+            font-size: $fs-1;
+        }
+    }
+    svg{
+        position: absolute;
+        top: 50%;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        transform: translate(-50%, -50%);
     }
 }
 //== /INSIGHT ==
