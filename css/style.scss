@@ -54,11 +54,15 @@ body{
     @include inter();
     background-color: $color--white;
     color: $color--primary;
+    display: block;
 }
 a{
     text-decoration: none;
 }
-
+ul{
+    padding: 0;
+    margin: 0;
+}
 .container{
     max-width: 1200px;
     margin: 0 auto;
@@ -79,9 +83,20 @@ a{
     font-size: 56px;
     letter-spacing: -2px;
     &--white{
-        color: $color--white;   
+        color: $color--white;
     }
 }
+.h4{
+    color: $color--primary;
+    font-weight: $fw-semi;
+    line-height: 1.4;
+    font-size: $fs-5;
+    letter-spacing: -1px;
+    &--white{
+        color: $color--white;
+    }
+}  
+
 .h1,h2,h3,h4,h5,h6{
     margin: 0;
     padding: 0;
@@ -297,7 +312,7 @@ a{
     }
     .text{
         @include text-style();
-        width:60%;
+        width: 60%;
         margin-bottom: $base * 20;
     }
 
@@ -312,17 +327,13 @@ a{
         svg{
             margin-bottom: $base * 7;
         }
-        &-title{
-            width: 50%;
-            font-size: $fs-5;
-            line-height: 1.3;
-            font-weight: $fw-semi;
-            letter-spacing: -1px;
-            color: $color--white;
+        .h4{
+            width: 51%;
             margin-bottom: $base * 6;
         }
         &-text{
             @include text-style-xs();
+            width: 100%;
         }
     }
 }
@@ -357,7 +368,6 @@ a{
     }
     .text{
         @include text-style();
-        width: 70%;
         margin-bottom: $base * 10;
     }
 }
@@ -372,7 +382,6 @@ a{
         &-text{
             @include text-style();
             color: $color--primary;
-            width: 70%;
         }
         margin-bottom: $base * 8;
     }
@@ -387,6 +396,53 @@ a{
         padding-top: $padding-vertical-xs;
         padding-bottom: $padding-vertical-xl;
     }
+    img{
+        margin-bottom: $base * 20;
+    }
+}
+.strength_stats{
+    display: flex;
+    list-style: none;
+    margin-bottom: $base * 20;
+    &-item{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-basis: 25%;
+        $margin-left: $base * 36;
+        &:not(:first-child){
+            margin-left: $margin-left;
+        }
+        &:not(:first-child)::before{
+            position: absolute;
+            top: $base * 6;
+            left: -$margin-left / 2;
+            content: "";
+            width: 1px;
+            height: $base * 25;
+            background-color: #CED1D8;
+        }
+        &-count{
+            font-size: 64px;
+            font-weight: $fw-semi;
+            line-height: 1.2;
+            margin-bottom: $base * 2;
+        }
+        &-text{
+            @include text-style();
+        }   
+    }
+}
+.strength-info{
+    display: flex;
+    justify-content: space-between;
+    .h2{
+        flex-basis: 60%;
+    }
+    &-text{
+        flex-basis: 35%;
+        @include text-style();
+    }
 }
 //== /STRENGTH ==
 
@@ -395,6 +451,35 @@ a{
     .container{
         padding-top: $padding-vertical-sm;
         padding-bottom: $padding-vertical-sm;
+        display: flex;
+        justify-content: space-around;
+    }
+
+}
+.section-partners-left{
+    flex-basis: 30%;
+    .h2{
+        margin-bottom: $base * 4;
+    }
+    .text{
+        @include text-style();
+    }
+}
+
+.partners__gallery{
+    flex-basis: 65%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    &-item{
+        position: relative;
+        &-link{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 }
 //== /PARTNERS ==
@@ -406,6 +491,38 @@ a{
     .container{
         padding-top: $padding-vertical-xl;
         padding-bottom: $padding-vertical-ml;
+    }
+    .h2{
+        width: 50%;
+        margin-bottom: $base * 6;
+    }
+    .text{
+        @include text-style();
+        width: 50%;
+        margin-bottom: $base * 20;
+    }
+}
+.services__list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: $base * 14;
+    column-gap: $base * 16;
+    &-item{
+        display: flex;
+        &-img{
+            margin-right: $base * 15;
+            position: relative;
+            svg{
+                position: absolute;
+                top: $base * 3;
+                bottom: 0;
+                left: $base * 43;
+                right: 0;
+            }
+        }
+        .h4{
+            margin-bottom: $base * 6;
+        }
     }
 }
 //== /SERVICES ==
