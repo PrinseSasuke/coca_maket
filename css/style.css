@@ -22,7 +22,6 @@ ul {
 }
 
 .h1 {
-  color: #1D1E25;
   font-weight: 700;
   line-height: 1.2;
   font-size: 80px;
@@ -30,7 +29,6 @@ ul {
 }
 
 .h2 {
-  color: #1D1E25;
   font-weight: 600;
   line-height: 1.2;
   font-size: 56px;
@@ -41,8 +39,14 @@ ul {
   color: #fff;
 }
 
+.h3 {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.3;
+  letter-spacing: -1px;
+}
+
 .h4 {
-  color: #1D1E25;
   font-weight: 600;
   line-height: 1.4;
   font-size: 32px;
@@ -52,7 +56,14 @@ ul {
   color: #fff;
 }
 
-.h1, h2, h3, h4, h5, h6 {
+.h6 {
+  font-weight: 600;
+  line-height: 1.4;
+  font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1D1E25;
   margin: 0;
   padding: 0;
 }
@@ -78,6 +89,16 @@ ul {
 }
 .btn--lg {
   padding: 16px 44px;
+}
+
+button, input[type=submit], input[type=reset] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 .section-header .container {
@@ -521,7 +542,8 @@ ul {
 .testimonials-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 48px;
+  align-items: center;
+  margin-bottom: 112px;
 }
 .testimonials-wrapper .h2 {
   flex-basis: 45%;
@@ -533,4 +555,82 @@ ul {
 
 .testimonials-slider {
   list-style: none;
+}
+.testimonials-slider-item {
+  position: relative;
+  width: 75%;
+  margin: 0 auto;
+}
+.testimonials-slider-item-quotes_img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.testimonials-slider-item .h3 {
+  margin-bottom: 80px;
+}
+.testimonials-slider-item-score {
+  display: flex;
+}
+.testimonials-slider-item-score .stars {
+  display: flex;
+  list-style: none;
+}
+.testimonials-slider-item-score .stars-item + .testimonials-slider-item-score .stars-item {
+  margin-right: 8px;
+}
+.testimonials-slider-item-score .stars :last-child {
+  margin-right: 4px;
+}
+.testimonials-slider-item-wrapper {
+  display: flex;
+  align-items: center;
+}
+.testimonials-slider-item-photo {
+  margin-right: 24px;
+}
+.testimonials-slider-item-author .text {
+  color: #7E8492;
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.testimonials-slider-item .quotes_img {
+  width: 115px;
+  height: 77px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40px;
+  transform: translate(-115px, -77px);
+  right: 0;
+}
+.testimonials-slider-item .btns {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  display: flex;
+}
+
+.slider_btn {
+  padding: 16px;
+  border-radius: 100%;
+  transition: 0.2s;
+}
+.slider_btn-previous {
+  border: solid 1px #CED1D8;
+  margin-right: 16px;
+}
+.slider_btn-next svg {
+  transform: rotate(180deg);
+}
+.slider_btn:hover {
+  background-color: #1D1E25;
+}
+.slider_btn:hover svg path {
+  fill: #fff;
 }
