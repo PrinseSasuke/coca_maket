@@ -66,7 +66,6 @@ ul{
 .container{
     max-width: 1200px;
     margin: 0 auto;
-    border-bottom: 1px solid rgb(1, 2, 3);
 }
 
 .h1{
@@ -244,7 +243,7 @@ button, input[type="submit"], input[type="reset"] {
             content: "";
             display: inline-block;
             height: 1px;
-            width: 15%;
+            width: 30%;
             margin-right: $base * 7;
             margin-top: $base * 5;
             background-color: $color--dark;
@@ -591,6 +590,7 @@ button, input[type="submit"], input[type="reset"] {
     .container{
         padding-top: $padding-vertical-ml;
         padding-bottom: $padding-vertical-xs;
+        
     }
 
 }
@@ -701,7 +701,87 @@ button, input[type="submit"], input[type="reset"] {
 //== FOOTER ==
 .section-footer{
     .container{
-        
+        position: relative;
+        padding-top: $padding-vertical-ml;
+        padding-bottom: $padding-vertical-xs;
+        margin-bottom: $base * 32;
+        border-bottom: 1px solid #CED1D8;
     }
+    .text{
+        display: inline-flex;
+        width: 50%;
+        font-weight: $fw-semi;
+        font-size: $fs-4;
+        line-height: 1.4;
+        margin-bottom: $base * 32;
+        &::before{
+            content: "";
+            display: inline-block;
+            height: 1px;
+            width: 30%;
+            margin-right: $base * 7;
+            margin-top: $base * 5;
+            background-color: $color--dark;
+        }
+    }
+}
+.footer-wrapper{
+    display: flex;
+    justify-content: space-between;
+    &-left{
+        flex-basis: 25%;
+    }
+    &-right{
+        flex-basis: 60%;
+    }
+    &-text{
+        font-weight: $fw-medium;
+        font-size: $fs-2;
+        line-height: 1.6;
+    }
+}
+.nav-footer{
+    display: flex;
+    &-wrapper{
+        list-style: none;
+        display: flex;
+        &-item{
+            & + &{
+                margin-left: $base * 24;
+            }
+            .title{
+                font-weight: $fw-bold;
+                font-size: $fs-2;
+                line-height: 1.6;
+                margin-bottom: $base * 6;
+            }
+            .list{
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                &-item{
+                    &-link{
+                        font-weight: $fw-regular;
+                        font-size: $fs-2;
+                        line-height: 1.6;
+                    }
+                    & + &{
+                        margin-bottom: $base * 4;
+                    }
+                }
+            }
+        }
+    }
+}
+.footer-btn{
+    float: right;
+}
+.copyright{
+    position: absolute;
+    top: 105%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
 }
 //== /FOOTER == 
