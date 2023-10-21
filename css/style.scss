@@ -572,6 +572,22 @@ ul{
         padding-bottom: $padding-vertical-xs;
     }
 }
+.testimonials-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $base * 12;
+    .h2{
+        flex-basis: 45%;
+        margin-bottom: 0;
+    }
+    .text{
+        flex-basis: 30%;
+    }
+    
+}
+.testimonials-slider{
+    list-style: none;
+}
 //== /TESTIMONIALS ==
 
 //== FOOTER ==

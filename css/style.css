@@ -517,3 +517,20 @@ ul {
   padding-top: 108px;
   padding-bottom: 64px;
 }
+
+.testimonials-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+.testimonials-wrapper .h2 {
+  flex-basis: 45%;
+  margin-bottom: 0;
+}
+.testimonials-wrapper .text {
+  flex-basis: 30%;
+}
+
+.testimonials-slider {
+  list-style: none;
+}
