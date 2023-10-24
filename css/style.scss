@@ -18,8 +18,19 @@
 }
 // === /MIXIN ===
 
+
+// === FUNCTIONS ===
+@function strip-unit($num){
+    @return $num / ($num * 0 + 1);
+}
+
+@function rem($num){
+    @return (strip-unit($num) / 16) * 1rem;
+}
+// === FUNCTIONS ===
+
 //== VARIABLES ===
-$base: 4px;
+$base: rem(4px);
 
 $padding-vertical-xs: $base * 16; //64
 $padding-vertical-sm: $base * 21; //84
@@ -33,12 +44,12 @@ $fw-medium: 500;
 $fw-semi: 600;
 $fw-bold: 700;
 
-$fs-1: 14px;
-$fs-2: 16px;
-$fs-3: 18px;
-$fs-4: 24px;
-$fs-5: 32px;
-$fs-6: 40px;
+$fs-1: rem(14px);
+$fs-2: rem(16px);
+$fs-3: rem(18px);
+$fs-4: rem(24px);
+$fs-5: rem(32px);
+$fs-6: rem(40px);
 
 
 $transition: .2s;
@@ -47,9 +58,29 @@ $color--primary: #1D1E25;
 $color--secondary: #7E8492;
 $color--white: #fff;
 $color--dark: #000000;
+
+
+//===ADAPTIVE===
+$width-desktop: 1600px;
+$width-tablet: 960px;
+$width-mobile-large: 640px;
+$width-mobile-medium: 480px;
+$width-mobile-small: 360px;
+//===ADAPTIVE===
+
+
 //== /VARIABLES ===
 
 //== COMMON ===
+html{
+    font-size: 16px;
+    @media (max-width: 1200px) {
+        font-size: 90%;
+    }
+    @media (max-width: $width-tablet) {
+        font-size: 85%;
+      }
+}
 body{
     @include inter();
     background-color: $color--white;
@@ -63,21 +94,65 @@ ul{
     padding: 0;
     margin: 0;
 }
+
+img{
+    max-width: 100%;
+    
+}
+
+
+
+//===CONTAINER===
+$container-width-tablet: 920px;
+$container-width-mobile-large: 600px;
+$container-width-mobile-medium: 450px;
+$container-width-mobile-small: 340px;
+
+
+
+
 .container{
     max-width: 1200px;
     margin: 0 auto;
+    
+  @media (max-width: 1200px) {
+    width: calc(100% - 20px);
+    max-width: 1200px;
+  }  
+
+  @media (max-width: $width-tablet) {
+    width: calc(100% - 20px);
+    max-width: $container-width-tablet;
+  }
+
+  @media (max-width: $width-mobile-large) {
+    width: calc(100% - 20px);
+    max-width: $container-width-mobile-large;
+  }
+
+  @media (max-width: $width-mobile-medium) {
+    width: calc(100% - 20px);
+    max-width: $container-width-mobile-medium;
+  }
+
+  @media (max-width: $width-mobile-small) {
+    max-width: $container-width-mobile-small;
+    width: calc(100% - 20px);
+  }
 }
+
+//===/CONTAINER===
 
 .h1{
     font-weight: $fw-bold;
     line-height: 1.2;
-    font-size: 80px;
+    font-size: rem(80px);
     letter-spacing: -3px;
 }
 .h2{
     font-weight: $fw-semi;
     line-height: 1.2;
-    font-size: 56px;
+    font-size: rem(56px);
     letter-spacing: -2px;
     &--white{
         color: $color--white;
@@ -98,6 +173,10 @@ ul{
     &--white{
         color: $color--white;
     }
+    @media (max-width: $width-tablet) {
+        font-size: $fs-4;
+      }
+    
 }
 .h5{
 
@@ -229,6 +308,7 @@ button, input[type="submit"], input[type="reset"] {
 }
 .section-widget__left{
     flex-basis: 50%;
+    
     .h1{
         margin-bottom: $base * 28;
     }
@@ -267,6 +347,15 @@ button, input[type="submit"], input[type="reset"] {
     flex-basis: 38%;
     margin-top: $base * 16;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    @media (max-width: 1400px) {
+        overflow-x: clip;
+      }
+    @media (max-width: 1200px) {
+        flex-basis: 45%;
+      }    
 }
 .graph-sales{
     margin-bottom: $base * 8;
@@ -278,6 +367,9 @@ button, input[type="submit"], input[type="reset"] {
     left: 70%;
     right: 0;
     z-index: 2;
+    @media (max-width: 1400px) {
+        max-width: 45%;
+      }  
 }
 .statistic{
     display: flex;
@@ -297,7 +389,7 @@ button, input[type="submit"], input[type="reset"] {
         &-count{
             color: $color--white;
             font-weight: $fw-bold;
-            font-size: 20px;
+            font-size: $base * 5;
             margin-bottom: $base * 2;
         }
         &-res{
@@ -332,11 +424,17 @@ button, input[type="submit"], input[type="reset"] {
     }
     .h2{
         width:70%;
+        @media (max-width: $width-tablet) {
+            width: 100%;
+          }
     }
     .text{
         @include text-style();
         width: 60%;
         margin-bottom: $base * 20;
+        @media (max-width: $width-tablet) {
+            width: 100%;
+          }
     }
 
 }
@@ -371,6 +469,10 @@ button, input[type="submit"], input[type="reset"] {
         padding-top: $padding-vertical-xl;
         padding-bottom: $padding-vertical-ml;
         display: flex;
+        @media (max-width: $width-tablet) {
+            padding-top: $padding-vertical-xl / 2;
+            flex-direction: column;
+          }
     }
 }
 .features-left{
@@ -415,6 +517,9 @@ button, input[type="submit"], input[type="reset"] {
     .container{
         padding-top: $padding-vertical-xs;
         padding-bottom: $padding-vertical-xl;
+        @media (max-width: $width-tablet) {
+            padding-bottom: $padding-vertical-xl / 2;
+        }
     }
     img{
         margin-bottom: $base * 20;
@@ -430,6 +535,9 @@ button, input[type="submit"], input[type="reset"] {
         flex-direction: column;
         flex-basis: 25%;
         $margin-left: $base * 36;
+        @media (max-width: $width-tablet) {
+            $margin-left: $base * 6;
+          }
         &:not(:first-child){
             margin-left: $margin-left;
         }
@@ -443,7 +551,7 @@ button, input[type="submit"], input[type="reset"] {
             background-color: #CED1D8;
         }
         &-count{
-            font-size: 64px;
+            font-size: rem(64px);
             font-weight: $fw-semi;
             line-height: 1.2;
             margin-bottom: $base * 2;
@@ -473,6 +581,9 @@ button, input[type="submit"], input[type="reset"] {
         padding-bottom: $padding-vertical-sm;
         display: flex;
         justify-content: space-around;
+        @media (max-width: $width-tablet) {
+            flex-direction: column;
+        }
     }
 
 }
@@ -484,6 +595,10 @@ button, input[type="submit"], input[type="reset"] {
     .text{
         @include text-style();
     }
+    @media (max-width: $width-tablet) {
+       margin-bottom: 50px;
+       text-align: center;
+    }
 }
 
 .partners__gallery{
@@ -494,6 +609,7 @@ button, input[type="submit"], input[type="reset"] {
     grid-template-rows: repeat(2, 1fr);
     &-item{
         position: relative;
+        height: $base * 23;
         &-link{
             position: absolute;
             top: 50%;
@@ -511,14 +627,23 @@ button, input[type="submit"], input[type="reset"] {
     .container{
         padding-top: $padding-vertical-xl;
         padding-bottom: $padding-vertical-ml;
+        @media (max-width: $width-tablet) {
+            padding-top: $padding-vertical-xl / 2;
+        }
     }
     .h2{
         width: 50%;
+        @media (max-width: $width-tablet) {
+            width: 100%;
+          }
     }
     .text{
         @include text-style();
         width: 50%;
         margin-bottom: $base * 20;
+        @media (max-width: $width-tablet) {
+            width: 100%;
+          }
     }
 }
 .services__list{
@@ -526,21 +651,43 @@ button, input[type="submit"], input[type="reset"] {
     grid-template-columns: repeat(2, 1fr);
     row-gap: $base * 14;
     column-gap: $base * 16;
+    @media (max-width: 1200px) {
+        column-gap: $base * 12;
+      }
     &-item{
         display: flex;
         &-img{
+            flex-basis: 45%;
             margin-right: $base * 15;
             position: relative;
+            $width: $base * 60;
+            width: $width;
+            
             svg{
                 position: absolute;
                 top: $base * 3;
                 bottom: 0;
-                left: $base * 43;
                 right: 0;
+                @media (max-width: $width-tablet) {
+                    top: $base;
+                    max-width: 30%;
+                  }
             }
+            
+
+            @media (max-width: 1200px) {
+                margin-right: $base * 4;
+              }
+            
+        }
+        &__wrapper{
+            flex-basis: 50%;
         }
         .h4{
             margin-bottom: $base * 6;
+            @media (max-width: $width-tablet) {
+                margin-bottom: $base;
+              }
         }
     }
 }
@@ -652,8 +799,8 @@ button, input[type="submit"], input[type="reset"] {
             }
         }
         .quotes_img{
-            $width: 115px;
-            $height: 77px;
+            $width: $base * 28;
+            $height: $base * 19;
             width: $width;
             height: $height;
             position: absolute;
@@ -670,6 +817,9 @@ button, input[type="submit"], input[type="reset"] {
             left: 100%;
 
             display: flex;
+            @media (max-width: $width-tablet) {
+                left: 99%;
+              }
 
         }
     }
@@ -732,7 +882,7 @@ button, input[type="submit"], input[type="reset"] {
         flex-basis: 25%;
     }
     &-right{
-        flex-basis: 60%;
+        flex-basis: 65%;
     }
     &-text{
         font-weight: $fw-medium;
@@ -746,8 +896,12 @@ button, input[type="submit"], input[type="reset"] {
         list-style: none;
         display: flex;
         &-item{
+           
             & + &{
                 margin-left: $base * 24;
+                @media (max-width: 1200px) {
+                    margin-left: $base * 14;
+                  }
             }
             .title{
                 font-weight: $fw-bold;
@@ -760,13 +914,16 @@ button, input[type="submit"], input[type="reset"] {
                 display: flex;
                 flex-direction: column;
                 &-item{
+                    margin-bottom: $base * 4;
                     &-link{
+                        color: $color--primary;
                         font-weight: $fw-regular;
                         font-size: $fs-2;
                         line-height: 1.6;
                     }
                     & + &{
                         margin-bottom: $base * 4;
+                        
                     }
                 }
             }
