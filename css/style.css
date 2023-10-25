@@ -18,6 +18,8 @@ body {
   background-color: #fff;
   color: #1D1E25;
   display: block;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -36,6 +38,7 @@ img {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 @media (max-width: 1200px) {
   .container {
