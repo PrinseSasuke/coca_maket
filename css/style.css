@@ -12,11 +12,6 @@ html {
     font-size: 85%;
   }
 }
-@media (max-width: 768px) {
-  html {
-    font-size: 80%;
-  }
-}
 
 body {
   font-family: "Inter", sans-serif;
@@ -273,10 +268,13 @@ button, input[type=submit], input[type=reset] {
 .section-widget__right {
   flex-basis: 38%;
   margin-top: 64px;
-  position: relative;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+}
+.section-widget__right .sales {
+  position: relative;
+  width: fit-content;
 }
 @media (max-width: 1400px) {
   .section-widget__right {
