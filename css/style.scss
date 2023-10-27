@@ -30,7 +30,7 @@
 // === FUNCTIONS ===
 
 //== VARIABLES ===
-$base: rem(4px);
+$base: 4px;
 
 $padding-vertical-xs: $base * 16; //64
 $padding-vertical-sm: $base * 21; //84
@@ -54,19 +54,23 @@ $fs-6: rem(40px);
 
 $transition: .2s;
 
+
 $color--primary: #1D1E25;
 $color--secondary: #7E8492;
 $color--white: #fff;
 $color--dark: #000000;
 
 
-//===ADAPTIVE===
-$width-desktop: 1600px;
-$width-tablet: 960px;
-$width-mobile-large: 640px;
-$width-mobile-medium: 480px;
-$width-mobile-small: 360px;
-//===ADAPTIVE===
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+
+$screen-xs-max: 575px;
+$screen-sm-max: 767px;
+$screen-md-max: 991px;
+$screen-lg-max: 1199px;
+
 
 
 //== /VARIABLES ===
@@ -74,12 +78,15 @@ $width-mobile-small: 360px;
 //== COMMON ===
 html{
     font-size: 16px;
-    @media (max-width: 1200px) {
+    @media (max-width: $screen-xl) {
         font-size: 90%;
     }
-    @media (max-width: $width-tablet) {
+    @media (max-width: $screen-lg) {
         font-size: 85%;
       }
+    @media (max-width: $screen-md) {
+        font-size: 80%;
+    }
 }
 body{
     @include inter();
@@ -114,36 +121,33 @@ $container-width-mobile-small: 340px;
 
 
 .container{
-    max-width: 1200px;
+    max-width: $screen-xl;
     margin: 0 auto;
     padding: 0 10px;
     
-  @media (max-width: 1200px) {
-    width: calc(100% - 20px);
-    max-width: 1200px;
+  @media (max-width: $screen-xl) {
+    width: calc(100%);
+    max-width: $screen-xl;
   }  
 
-  @media (max-width: $width-tablet) {
-    width: calc(100% - 20px);
+  @media (max-width: $screen-lg) {
+    width: calc(100%);
     max-width: $container-width-tablet;
   }
 
-  @media (max-width: $width-mobile-large) {
-    width: calc(100% - 20px);
+  @media (max-width: $screen-md) {
+    width: calc(100%);
     max-width: $container-width-mobile-large;
   }
 
-  @media (max-width: $width-mobile-medium) {
-    width: calc(100% - 20px);
+  @media (max-width: $screen-sm) {
+    width: calc(100%);
     max-width: $container-width-mobile-medium;
   }
-
-  @media (max-width: $width-mobile-small) {
-    max-width: $container-width-mobile-small;
-    width: calc(100% - 20px);
-  }
 }
-
+.section-outter{
+    padding: 0 20px;
+}
 //===/CONTAINER===
 
 .h1{
@@ -176,7 +180,7 @@ $container-width-mobile-small: 340px;
     &--white{
         color: $color--white;
     }
-    @media (max-width: $width-tablet) {
+    @media (max-width: $screen-lg) {
         font-size: $fs-4;
       }
     
@@ -307,6 +311,7 @@ button, input[type="submit"], input[type="reset"] {
         padding-bottom: $padding-vertical-lg;
         display: flex;
         justify-content: space-between;
+
     }
 }
 .section-widget__left{
@@ -356,7 +361,7 @@ button, input[type="submit"], input[type="reset"] {
     @media (max-width: 1400px) {
         overflow-x: clip;
       }
-    @media (max-width: 1200px) {
+    @media (max-width: $screen-xl) {
         flex-basis: 45%;
       }    
 }
@@ -427,7 +432,7 @@ button, input[type="submit"], input[type="reset"] {
     }
     .h2{
         width:70%;
-        @media (max-width: $width-tablet) {
+        @media (max-width: $screen-lg) {
             width: 100%;
           }
     }
@@ -435,7 +440,7 @@ button, input[type="submit"], input[type="reset"] {
         @include text-style();
         width: 60%;
         margin-bottom: $base * 20;
-        @media (max-width: $width-tablet) {
+        @media (max-width: $screen-lg) {
             width: 100%;
           }
     }
@@ -454,6 +459,9 @@ button, input[type="submit"], input[type="reset"] {
         .h4{
             width: 51%;
             margin-bottom: $base * 6;
+            @media (max-width: $screen-lg) {
+                width: 100%;
+              }
         }
         &-text{
             @include text-style-xs();
@@ -472,7 +480,7 @@ button, input[type="submit"], input[type="reset"] {
         padding-top: $padding-vertical-xl;
         padding-bottom: $padding-vertical-ml;
         display: flex;
-        @media (max-width: $width-tablet) {
+        @media (max-width: $screen-lg) {
             padding-top: $padding-vertical-xl / 2;
             flex-direction: column;
           }
@@ -520,7 +528,7 @@ button, input[type="submit"], input[type="reset"] {
     .container{
         padding-top: $padding-vertical-xs;
         padding-bottom: $padding-vertical-xl;
-        @media (max-width: $width-tablet) {
+        @media (max-width: $screen-lg) {
             padding-bottom: $padding-vertical-xl / 2;
         }
     }
@@ -538,7 +546,7 @@ button, input[type="submit"], input[type="reset"] {
         flex-direction: column;
         flex-basis: 25%;
         $margin-left: $base * 36;
-        @media (max-width: $width-tablet) {
+        @media (max-width: $screen-lg) {
             $margin-left: $base * 6;
           }
         &:not(:first-child){
@@ -584,7 +592,7 @@ button, input[type="submit"], input[type="reset"] {
         padding-bottom: $padding-vertical-sm;
         display: flex;
         justify-content: space-around;
-        @media (max-width: $width-tablet) {
+        @media (max-width: $screen-lg) {
             flex-direction: column;
         }
     }
@@ -598,7 +606,7 @@ button, input[type="submit"], input[type="reset"] {
     .text{
         @include text-style();
     }
-    @media (max-width: $width-tablet) {
+    @media (max-width: $screen-lg) {
        margin-bottom: 50px;
        text-align: center;
     }
@@ -630,13 +638,13 @@ button, input[type="submit"], input[type="reset"] {
     .container{
         padding-top: $padding-vertical-xl;
         padding-bottom: $padding-vertical-ml;
-        @media (max-width: $width-tablet) {
+        @media (max-width: $screen-lg) {
             padding-top: $padding-vertical-xl / 2;
         }
     }
     .h2{
         width: 50%;
-        @media (max-width: $width-tablet) {
+        @media (max-width: $screen-lg) {
             width: 100%;
           }
     }
@@ -644,7 +652,7 @@ button, input[type="submit"], input[type="reset"] {
         @include text-style();
         width: 50%;
         margin-bottom: $base * 20;
-        @media (max-width: $width-tablet) {
+        @media (max-width: $screen-lg) {
             width: 100%;
           }
     }
@@ -654,43 +662,56 @@ button, input[type="submit"], input[type="reset"] {
     grid-template-columns: repeat(2, 1fr);
     row-gap: $base * 14;
     column-gap: $base * 16;
-    @media (max-width: 1200px) {
-        column-gap: $base * 12;
-      }
     &-item{
         display: flex;
+        &__wrapper{
+            flex-basis: 55%;
+        }
         &-img{
             flex-basis: 45%;
             margin-right: $base * 15;
             position: relative;
             $width: $base * 60;
-            width: $width;
-            
+            width: $width;     
             svg{
                 position: absolute;
                 top: $base * 3;
                 bottom: 0;
                 right: 0;
-                @media (max-width: $width-tablet) {
-                    top: $base;
-                    max-width: 30%;
-                  }
             }
-            
-
-            @media (max-width: 1200px) {
-                margin-right: $base * 4;
-              }
-            
-        }
-        &__wrapper{
-            flex-basis: 50%;
         }
         .h4{
             margin-bottom: $base * 6;
-            @media (max-width: $width-tablet) {
+            @media (max-width: $screen-lg) {
                 margin-bottom: $base;
               }
+        }
+        &-text{
+            @include text-style();
+        }
+    }
+    @media (max-width: $screen-xl) {
+        column-gap: $base * 12;
+        &-item{
+            &-img{
+                margin-right: $base * 4;
+            }
+        }
+    }
+    @media (max-width: $screen-lg) {
+        grid-template-columns: repeat(1, 1fr);
+        &-item{
+            justify-content: space-between;
+            &-img{
+                flex-basis: initial;
+                margin-right: 0;
+                svg{
+                    @media (max-width: $screen-lg) {
+                        top: $base;
+                        max-width: 30%;
+                      }
+                }
+            }
         }
     }
 }
@@ -817,12 +838,9 @@ button, input[type="submit"], input[type="reset"] {
         .btns{
             position: absolute;
             bottom: 0;
-            left: 100%;
-
+            right: 0;
+            transform: translateX(80%);
             display: flex;
-            @media (max-width: $width-tablet) {
-                left: 99%;
-              }
 
         }
     }
@@ -831,8 +849,8 @@ button, input[type="submit"], input[type="reset"] {
     padding: $base * 4;
     border-radius: 100%;
     transition: $transition;
+    border: solid 1px #CED1D8;
     &-previous{
-        border: solid 1px #CED1D8;
         margin-right: $base * 4;
     }
     &-next{
@@ -886,11 +904,50 @@ button, input[type="submit"], input[type="reset"] {
     }
     &-right{
         flex-basis: 65%;
+        &__mobile{
+            display: none;
+
+        }
     }
     &-text{
         font-weight: $fw-medium;
         font-size: $fs-2;
         line-height: 1.6;
+    }
+    @media (max-width: $screen-lg) {
+        flex-direction: column;
+        &-left{
+            width: 50%;
+            margin-bottom: $base * 25;
+        }
+        &-right{
+            display: none;
+            &__mobile{
+                display: block;
+                .socials{
+                    display: flex;
+                    width: fit-content;
+                    margin: 0 auto;
+                    margin-bottom: $base * 6;
+                    &-item{
+                        &:not(:first-child){
+                            margin-left: $base * 6;
+                        }
+                    }
+                }
+                .list{
+                    display: flex;
+                    width: fit-content;
+                    margin: 0 auto;
+                    &-item{
+                        @include text-style();
+                        &:not(:first-child){
+                            margin-left: $base * 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 .nav-footer{
@@ -902,7 +959,7 @@ button, input[type="submit"], input[type="reset"] {
            
             & + &{
                 margin-left: $base * 24;
-                @media (max-width: 1200px) {
+                @media (max-width: $screen-xl) {
                     margin-left: $base * 14;
                   }
             }
