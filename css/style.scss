@@ -10,6 +10,9 @@
     font-size: $fs-3;
     line-height: 1.8;
     font-weight: $fw-medium;
+    @media (max-width: $screen-sm) {
+        font-size: $fs-1;
+    }
 }
 @mixin text-style-xs{
     @include text-style();
@@ -32,11 +35,11 @@
 //== VARIABLES ===
 $base: 4px;
 
-$padding-vertical-xs: $base * 16; //64
-$padding-vertical-sm: $base * 21; //84
-$padding-vertical-ml: $base * 27; //108
-$padding-vertical-lg: $base * 33; // 132
-$padding-vertical-xl: $base * 40; //160
+$padding-vertical-xs: rem($base * 16); //64
+$padding-vertical-sm: rem($base * 21); //84
+$padding-vertical-ml: rem($base * 27); //108
+$padding-vertical-lg: rem($base * 33); // 132
+$padding-vertical-xl: rem($base * 40); //160
 
 
 $fw-regular: 400;
@@ -44,12 +47,14 @@ $fw-medium: 500;
 $fw-semi: 600;
 $fw-bold: 700;
 
-$fs-1: rem(14px);
-$fs-2: rem(16px);
-$fs-3: rem(18px);
-$fs-4: rem(24px);
-$fs-5: rem(32px);
-$fs-6: rem(40px);
+$fs-xs: 12px;
+$fs-1: 14px;
+$fs-2: 16px;
+$fs-3: 18px;
+$fs-4: 24px;
+$fs-5: 32px;
+$fs-6: 40px;
+
 
 
 $transition: .2s;
@@ -79,7 +84,10 @@ html{
     }
     @media (max-width: $screen-lg) {
         font-size: 85%;
-      }
+    }
+    @media (max-width: $screen-sm) {
+        font-size: 50%;
+    }
 }
 body{
     @include inter();
@@ -116,7 +124,6 @@ $container-width-mobile-small: 340px;
 .container{
     max-width: $screen-xl;
     margin: 0 auto;
-    padding: 0 10px;
     
   @media (max-width: $screen-xl) {
     width: calc(100%);
@@ -146,18 +153,18 @@ $container-width-mobile-small: 340px;
 .h1{
     font-weight: $fw-bold;
     line-height: 1.2;
-    font-size: rem(80px);
+    font-size: 80px;
     letter-spacing: -3px;
 }
 .h2{
     font-weight: $fw-semi;
     line-height: 1.2;
-    font-size: rem(56px);
+    font-size: 56px;
     letter-spacing: -2px;
     &--white{
         color: $color--white;
     }
-    margin-bottom: $base * 6;
+    margin-bottom: rem($base * 6);
 }
 .h3{
     font-weight: $fw-medium;
@@ -173,20 +180,42 @@ $container-width-mobile-small: 340px;
     &--white{
         color: $color--white;
     }
-    @media (max-width: $screen-lg) {
-        font-size: $fs-4;
-      }
-    
 }
-.h5{
 
-}
 .h6{
     font-weight: $fw-semi;
     line-height: 1.4;
     font-size: $fs-3;
 }
 
+@media (max-width: $screen-lg) {
+    .h1{
+        font-size: 60px;
+    }
+    .h2{
+        font-size: 45px;
+    }
+    .h4{
+        font-size: $fs-4;
+    }
+} 
+@media (max-width: $screen-sm) {
+    .h1{
+        font-size: 34px;
+    }
+    .h2{
+        font-size: 24px;
+    }
+    .h3{
+        font-size: $fs-3;
+    }
+    .h4{
+        font-size: $fs-3;
+    }
+    .h6{
+        font-size: $fs-1;
+    }
+} 
 h1,h2,h3,h4,h5,h6{
     color: $color--primary;
     margin: 0;
@@ -213,6 +242,12 @@ h1,h2,h3,h4,h5,h6{
     &--lg{
         padding: $base*4 $base*11;
     }
+    @media (max-width: $screen-sm){
+        font-size: $fs-xs;
+        &--lg{
+            padding: $base*2 $base*4;
+        }
+    }
 }
 button, input[type="submit"], input[type="reset"] {
 	background: none;
@@ -237,6 +272,12 @@ button, input[type="submit"], input[type="reset"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.burger_menu{
+    display: none;
+    @media (max-width: $screen-md){
+        display: flex;
+    }
 }
 .nav-wrapper{
     display: flex;
@@ -269,6 +310,9 @@ button, input[type="submit"], input[type="reset"] {
     }
     .contact_us{
         margin-left: $base * 17;
+    }
+    @media (max-width: $screen-md){
+        display: none;
     }
 }
 
@@ -304,8 +348,13 @@ button, input[type="submit"], input[type="reset"] {
         padding-bottom: $padding-vertical-lg;
         display: flex;
         justify-content: space-between;
-
     }
+    @media (max-width: $screen-lg) {
+        .container{
+            flex-direction: column;
+        }    
+    }
+    
 }
 .section-widget__left{
     flex-basis: 50%;
@@ -331,6 +380,20 @@ button, input[type="submit"], input[type="reset"] {
             //margin-right: $base * 7;
         }
     }
+    @media (max-width: $screen-lg) {
+        .text{
+            width: 75%;
+        }  
+    }
+    @media (max-width: $screen-sm) {
+        .h1{
+            margin-bottom: $base * 10;
+        }
+        .text{
+            font-size: $fs-2;
+            margin-bottom: $base * 10;
+        }  
+    }
 }
 .widget_form{
     display: flex;
@@ -341,6 +404,17 @@ button, input[type="submit"], input[type="reset"] {
         border-bottom: 1px solid #CED1D8;
         font-size: $fs-2;
         padding-bottom: $base * 6;
+    }
+    @media (max-width: $screen-lg) {
+        &-input{
+            width: 55%;
+        }
+    }
+    @media (max-width: $screen-sm) {
+        &-input{
+            font-size: $fs-1;
+            padding-bottom: $base * 4;
+        }
     }
 }
 
@@ -373,7 +447,7 @@ button, input[type="submit"], input[type="reset"] {
     z-index: 2;
     @media (max-width: 1400px) {
         max-width: 45%;
-      }  
+    }  
 }
 .statistic{
     display: flex;
@@ -389,6 +463,7 @@ button, input[type="submit"], input[type="reset"] {
             font-weight: $fw-semi;
             color: #5C616F;
             margin-bottom: $base;
+            
         }
         &-count{
             color: $color--white;
@@ -413,6 +488,20 @@ button, input[type="submit"], input[type="reset"] {
             color: #E35454;
         }
     }
+    @media (max-width: $screen-sm) {
+        padding: $base*4 $base*5;
+        &-sales, &-marketing{
+            &-title{
+                font-size: $fs-xs;
+            }
+            &-count{
+                font-size: $fs-2;
+            }
+            &-res{
+                font-size: $fs-xs;
+            }
+        }
+    }  
 }
 //== /WIDEGET ==
 
@@ -428,19 +517,26 @@ button, input[type="submit"], input[type="reset"] {
     }
     .h2{
         width:70%;
-        @media (max-width: $screen-lg) {
-            width: 100%;
-          }
     }
     .text{
         @include text-style();
         width: 60%;
         margin-bottom: $base * 20;
-        @media (max-width: $screen-lg) {
-            width: 100%;
-          }
     }
-
+    @media (max-width: $screen-lg){
+        .h2{
+            width: 100%;
+        }
+        .text{
+            width: 100%;
+        }
+    }
+    @media (max-width: $screen-sm){
+        .text{
+            margin-bottom: $base * 8;
+        }
+        
+    }
 }
 .overview-list{
     display: grid;
@@ -455,14 +551,33 @@ button, input[type="submit"], input[type="reset"] {
         .h4{
             width: 51%;
             margin-bottom: $base * 6;
-            @media (max-width: $screen-lg) {
-                width: 100%;
-              }
         }
         &-text{
             @include text-style-xs();
             width: 100%;
         }
+    }
+    @media (max-width: $screen-lg) {
+        column-gap: $base * 10;
+        &-item{
+            .h4{
+                width: 100%;
+            }
+        }
+    }
+    @media (max-width: $screen-sm){
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: $base * 6;
+        &-item{
+            svg{
+                width: 18px;
+                height: 18px;
+                margin-bottom: $base * 5;
+            }
+            .h4{
+                margin-bottom: $base * 4;
+            }
+    }
     }
 }
 //== /OVERVIEW ==
@@ -480,6 +595,9 @@ button, input[type="submit"], input[type="reset"] {
             padding-top: $padding-vertical-xl / 2;
             flex-direction: column;
           }
+        @media (max-width: $screen-lg) {
+            padding-bottom: $base * 8;
+          }
     }
 }
 .features-left{
@@ -492,6 +610,26 @@ button, input[type="submit"], input[type="reset"] {
         bottom: 0;
     }
     margin-right: $base * 14;
+    @media (max-width: $screen-lg){
+        margin-right: 0px;
+        margin-bottom: $base * 8;
+        .stat-img{
+            left: 30%;
+        }
+    }
+    @media (max-width: $screen-md){
+        .stat-img{
+            left: 30%;
+            top: 35%;
+        }
+    }
+    @media (max-width: $screen-sm){
+        .stat-img{
+            max-width: 50%;
+            left: 45%;
+            top: 50%;
+        }
+    }
 }
 .features-right{
     flex-basis: 45%;
@@ -506,13 +644,23 @@ button, input[type="submit"], input[type="reset"] {
         display: flex;
         align-items: center;
         svg{
+            width: 20px;
+            height: 20px;
             margin-right: $base * 4;
         }
         &-text{
             @include text-style();
+            width: fit-content;
             color: $color--primary;
         }
         margin-bottom: $base * 8;
+    }
+    @media (max-width: $screen-sm) {
+        svg{
+            width: 18px;
+            height: 18px;
+            margin-right: $base * 3;
+        }
     }
 }
 //== /FEAUTERS ==
@@ -531,34 +679,33 @@ button, input[type="submit"], input[type="reset"] {
     img{
         margin-bottom: $base * 20;
     }
+    @media (max-width: $screen-sm) {
+        img{
+            margin-bottom: $base * 10;
+        }
+    }
 }
 .strength_stats{
     display: flex;
     list-style: none;
     margin-bottom: $base * 20;
+    justify-content: space-between;
     &-item{
         position: relative;
         display: flex;
         flex-direction: column;
-        flex-basis: 25%;
-        $margin-left: $base * 36;
-        @media (max-width: $screen-lg) {
-            $margin-left: $base * 6;
-          }
-        &:not(:first-child){
-            margin-left: $margin-left;
-        }
+        flex-basis: 18%;
         &:not(:first-child)::before{
             position: absolute;
             top: $base * 6;
-            left: -$margin-left / 2;
+            left: -34%;
             content: "";
             width: 1px;
             height: $base * 25;
             background-color: #CED1D8;
         }
         &-count{
-            font-size: rem(64px);
+            font-size: 64px;
             font-weight: $fw-semi;
             line-height: 1.2;
             margin-bottom: $base * 2;
@@ -566,6 +713,39 @@ button, input[type="submit"], input[type="reset"] {
         &-text{
             @include text-style();
         }   
+    }
+    @media (max-width: $screen-lg){
+        &-item{
+            &-count{
+                font-size: 50px;
+            }
+        }
+
+    }
+    @media (max-width: $screen-md) {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &-item{
+            flex-basis: 45%;
+            &:not(:first-child)::before{
+                left: -17%;
+                height: 80px;
+            }
+            &:nth-child(odd)::before{
+                display: none;
+            }
+        }
+    }
+    @media (max-width: $screen-sm){
+        margin-bottom: $base * 8;
+        &-item{
+            &-count{
+                font-size: 32px;
+            }
+            &:not(:first-child)::before{
+                height: 64px;
+            }
+        }
     }
 }
 .strength-info{
@@ -577,6 +757,9 @@ button, input[type="submit"], input[type="reset"] {
     &-text{
         flex-basis: 35%;
         @include text-style();
+    }
+    @media (max-width: $screen-sm){
+        flex-direction: column;
     }
 }
 //== /STRENGTH ==
@@ -604,7 +787,6 @@ button, input[type="submit"], input[type="reset"] {
     }
     @media (max-width: $screen-lg) {
        margin-bottom: 50px;
-       text-align: center;
     }
 }
 
@@ -623,6 +805,9 @@ button, input[type="submit"], input[type="reset"] {
             left: 50%;
             transform: translate(-50%, -50%);
         }
+    }
+    @media (max-width: $screen-sm){
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 //== /PARTNERS ==
@@ -675,6 +860,10 @@ button, input[type="submit"], input[type="reset"] {
                 bottom: 0;
                 right: 0;
             }
+            @media (max-width: $screen-md){
+                $width: $base * 50;
+                width: $width;     
+            }
         }
         .h4{
             margin-bottom: $base * 6;
@@ -710,6 +899,15 @@ button, input[type="submit"], input[type="reset"] {
             }
         }
     }
+    @media (max-width: $screen-sm){
+        &-item{
+            flex-direction: column;
+            .h4{
+                font-size: $fs-2;
+            }
+        }
+    }
+
 }
 //== /SERVICES ==
 
@@ -724,6 +922,14 @@ button, input[type="submit"], input[type="reset"] {
     .subtitle{
         @include text-style();
         margin-bottom: $base * 20;
+    }
+    @media (max-width: $screen-sm) {
+        .h2, .subtitle{
+            text-align:initial;
+        }
+        .subtitle{
+            margin-bottom: $base * 8;
+        }
     }
 
 }
@@ -749,6 +955,25 @@ button, input[type="submit"], input[type="reset"] {
         right: 0;
         transform: translate(-50%, -50%);
     }
+    @media (max-width: $screen-sm) {
+        &-item{
+            &-subtitle{
+                @include text-style();
+                display: flex;
+                justify-content: space-between;
+            }
+            &:nth-child(1){
+                flex-basis: 100%;
+            }
+            &:nth-child(2){
+                display: none;
+            }
+            
+        }
+        svg{
+            display: none;
+        }
+    }
 }
 //== /INSIGHT ==
 
@@ -771,7 +996,16 @@ button, input[type="submit"], input[type="reset"] {
         margin-bottom: 0;
     }
     .text{
+        @include text-style();
         flex-basis: 30%;
+    }
+    @media (max-width: $screen-sm) {
+        flex-direction: column;
+        margin-bottom: $base * 20;
+        width: 50%;
+        .h2{
+            margin-bottom: $base * 4;
+        }
     }
     
 }
@@ -796,6 +1030,7 @@ button, input[type="submit"], input[type="reset"] {
             .stars{
                 display: flex;
                 list-style: none;
+                align-items: center;
                 &-item{
                     & + &{
                         margin-right: $base * 2;
@@ -804,6 +1039,11 @@ button, input[type="submit"], input[type="reset"] {
                 :last-child{
                     margin-right: $base; 
                 }
+            }
+            .count{
+                font-size: $fs-2;
+                line-height: 1.8;
+                font-weight: $fw-medium;
             }
         }
         &-wrapper{
@@ -819,6 +1059,14 @@ button, input[type="submit"], input[type="reset"] {
             }
         }
         .quotes_img{
+            @media (max-width: $screen-sm) {
+                $width: $base * 8;
+                $height: $base * 7;
+                width: $width;
+                height: $height;
+                transform: translate(-$width, -$height);
+                left: 0;
+            }
             $width: $base * 28;
             $height: $base * 19;
             width: $width;
@@ -830,6 +1078,7 @@ button, input[type="submit"], input[type="reset"] {
             transform: translate(-$width, -$height);
 
             right: 0;
+
         }
         .btns{
             position: absolute;
@@ -837,7 +1086,44 @@ button, input[type="submit"], input[type="reset"] {
             right: 0;
             transform: translateX(80%);
             display: flex;
-
+        }
+    }
+    @media (max-width: $screen-md) {
+        &-item{
+            .btns{
+                transform: translateX(55%);
+            }
+        }
+    }
+    @media (max-width: $screen-sm) {
+        &-item{
+            .h3{
+                margin-bottom: $base;
+            }
+            &-score{
+                .stars{
+                    &-item{
+                        svg{
+                            width: 16px;
+                        }
+                        
+                    }
+                    margin-bottom: $base * 4;
+                    
+                }
+            }
+            &-author{
+                .text{
+                    font-size: $fs-xs;
+                }
+            }
+            &-photo{
+                margin-right: $base;
+                img{
+                    width: $base * 10;
+                    height: $base * 10;
+                }
+            }
         }
     }
 }
@@ -860,6 +1146,12 @@ button, input[type="submit"], input[type="reset"] {
             path{
                 fill: $color--white;
             }
+        }
+    }
+    @media (max-width: $screen-sm) {
+        padding: $base $base;
+        &-previous{
+            margin-right: $base;
         }
     }
 }
@@ -891,6 +1183,17 @@ button, input[type="submit"], input[type="reset"] {
             background-color: $color--dark;
         }
     }
+    @media (max-width: $screen-sm) {
+        .text{
+            width: 100%;
+            font-size: $fs-2;
+            margin-bottom: $base * 6;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }
 .footer-wrapper{
     display: flex;
@@ -912,8 +1215,11 @@ button, input[type="submit"], input[type="reset"] {
     }
     @media (max-width: $screen-lg) {
         flex-direction: column;
+        &-text{
+            @include text-style();
+        }
         &-left{
-            width: 50%;
+            width: 75%;
             margin-bottom: $base * 25;
         }
         &-right{
@@ -988,6 +1294,10 @@ button, input[type="submit"], input[type="reset"] {
 }
 .footer-btn{
     float: right;
+    @media (max-width: $screen-sm){
+        width: $base * 36;
+        margin-bottom: $base * 14;
+    }
 }
 .copyright{
     position: absolute;
@@ -996,5 +1306,9 @@ button, input[type="submit"], input[type="reset"] {
     right: 0;
     left: 0;
     text-align: center;
+    @media (max-width: $screen-sm){
+        @include text-style();
+    }
 }
+
 //== /FOOTER == 
