@@ -488,7 +488,14 @@ button, input[type="submit"], input[type="reset"] {
             color: #E35454;
         }
     }
+    @media (max-width: $screen-lg){
+        width: 50%;
+    }
+    @media (max-width: $screen-md){
+        width: 70%;
+    }
     @media (max-width: $screen-sm) {
+        width: 100%;
         padding: $base*4 $base*5;
         &-sales, &-marketing{
             &-title{
@@ -933,18 +940,35 @@ button, input[type="submit"], input[type="reset"] {
     }
 
 }
+.slider-list {
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+    touch-action: pan-y;
+    &.grab{
+        cursor: grab;
+    }
+    &.grabbing{
+        cursor: grabbing;
+    }
+}
+  
 .insight-list{
     position: relative;
     list-style: none;
     display: flex;
     justify-content: space-between;
-
     &-item{
+        flex-shrink: 0;
         flex-basis: 45%;
+        margin-right: 10%;
         &-subtitle{
             font-weight: $fw-regular;
             line-height: 1.5;
             font-size: $fs-1;
+        }
+        &:last-child{
+            margin-right: 0;
         }
     }
     svg{
@@ -954,6 +978,9 @@ button, input[type="submit"], input[type="reset"] {
         left: 50%;
         right: 0;
         transform: translate(-50%, -50%);
+    }
+    img{
+        pointer-events: none;
     }
     @media (max-width: $screen-sm) {
         &-item{

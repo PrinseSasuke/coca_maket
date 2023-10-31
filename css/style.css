@@ -421,8 +421,19 @@ button, input[type=submit], input[type=reset] {
 .statistic-marketing-res .percent {
   color: #E35454;
 }
+@media (max-width: 992px) {
+  .statistic {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .statistic {
+    width: 70%;
+  }
+}
 @media (max-width: 576px) {
   .statistic {
+    width: 100%;
     padding: 16px 20px;
   }
   .statistic-sales-title, .statistic-marketing-title {
@@ -944,6 +955,19 @@ button, input[type=submit], input[type=reset] {
   }
 }
 
+.slider-list {
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-y;
+}
+.slider-list.grab {
+  cursor: grab;
+}
+.slider-list.grabbing {
+  cursor: grabbing;
+}
+
 .insight-list {
   position: relative;
   list-style: none;
@@ -951,12 +975,17 @@ button, input[type=submit], input[type=reset] {
   justify-content: space-between;
 }
 .insight-list-item {
+  flex-shrink: 0;
   flex-basis: 45%;
+  margin-right: 10%;
 }
 .insight-list-item-subtitle {
   font-weight: 400;
   line-height: 1.5;
   font-size: 14px;
+}
+.insight-list-item:last-child {
+  margin-right: 0;
 }
 .insight-list svg {
   position: absolute;
@@ -965,6 +994,9 @@ button, input[type=submit], input[type=reset] {
   left: 50%;
   right: 0;
   transform: translate(-50%, -50%);
+}
+.insight-list img {
+  pointer-events: none;
 }
 @media (max-width: 576px) {
   .insight-list-item-subtitle {
