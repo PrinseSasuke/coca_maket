@@ -951,6 +951,14 @@ button, input[type="submit"], input[type="reset"] {
     &.grabbing{
         cursor: grabbing;
     }
+    svg{
+        position: absolute;
+        top: 50%;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        transform: translate(-50%, -50%);
+    }
 }
   
 .insight-list{
@@ -971,14 +979,7 @@ button, input[type="submit"], input[type="reset"] {
             margin-right: 0;
         }
     }
-    svg{
-        position: absolute;
-        top: 50%;
-        bottom: 0;
-        left: 50%;
-        right: 0;
-        transform: translate(-50%, -50%);
-    }
+
     img{
         pointer-events: none;
     }

@@ -1,4 +1,4 @@
-let sliderContainer = document.querySelector('.slider-list');
+/*let sliderContainer = document.querySelector('.slider-list');
 let innerSlider = document.querySelector('.insight-list');
 
 let pressed = false;
@@ -54,4 +54,22 @@ sliderContainer.addEventListener("mousemove", (e) => {
 
     innerSlider.style.transform = `translateX(${offsetX}px)`;
     checkBoundary();
-});
+});*/
+const carousel = document.querySelector(".slider-list");
+let isDragStart = false, prevPageX, prevScrollLeft;
+const dragStart = (e) => {
+    isDragStart = true;
+    prevPageX = e.pageX;
+    prevScrollLeft = carousel.scrollLeft;
+}
+const dragging = (e) => {
+    if (!isDragStart) return;
+    let positionDiff = e.pageX - prevPageX;
+    carousel.scrollLeft = prevScrollLeft - positionDiff;
+}
+const dragEnd = () =>{
+    isDragStart = false;
+}
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", dragging);
+carousel.addEventListener("mouseup", dragEnd);
