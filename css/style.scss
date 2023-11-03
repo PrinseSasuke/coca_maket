@@ -970,6 +970,9 @@ button, input[type="submit"], input[type="reset"] {
         flex-shrink: 0;
         flex-basis: 45%;
         margin-right: 10%;
+        img{
+            
+        }
         &-subtitle{
             font-weight: $fw-regular;
             line-height: 1.5;
@@ -985,17 +988,14 @@ button, input[type="submit"], input[type="reset"] {
     }
     @media (max-width: $screen-sm) {
         &-item{
+            flex-basis: 100%;
             &-subtitle{
                 @include text-style();
                 display: flex;
                 justify-content: space-between;
             }
-            &:nth-child(1){
-                flex-basis: 100%;
-            }
-            &:nth-child(2){
-                display: none;
-            }
+            
+
             
         }
         svg{

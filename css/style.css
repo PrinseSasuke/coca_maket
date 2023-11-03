@@ -999,6 +999,9 @@ button, input[type=submit], input[type=reset] {
   pointer-events: none;
 }
 @media (max-width: 576px) {
+  .insight-list-item {
+    flex-basis: 100%;
+  }
   .insight-list-item-subtitle {
     color: #7E8492;
     font-size: 18px;
@@ -1014,12 +1017,6 @@ button, input[type=submit], input[type=reset] {
   }
 }
 @media (max-width: 576px) {
-  .insight-list-item:nth-child(1) {
-    flex-basis: 100%;
-  }
-  .insight-list-item:nth-child(2) {
-    display: none;
-  }
   .insight-list svg {
     display: none;
   }
